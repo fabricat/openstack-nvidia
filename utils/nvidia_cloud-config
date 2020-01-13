@@ -9,7 +9,8 @@ runcmd:
  - [ wget, -O, /opt/nvidia_gpuexporter_install.sh, "https://bitbucket.kmiservicehub.com/users/fabrizio.catalucci/repos/monitoring-public/raw/utils/nvidia_gpuexporter_install.sh" ]
  - [ chmod, +x, '/opt/nvidia_gpuexporter_install.sh' ]
  - [ /opt/nvidia_gpuexporter_install.sh ]
- ### OPTIONAL: stress test for GPU
+ ### FOR DEMO ONLY: remove the following lines on production servers
+ ### stress test for GPU
  - [ sudo, apt-get, -y, install, cuda-10-2 ]
  - [ cd, /opt ]
  - [ git, clone, https://github.com/wilicc/gpu-burn.git ]
