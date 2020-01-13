@@ -16,5 +16,5 @@ runcmd:
  - [ git, clone, https://github.com/wilicc/gpu-burn.git ]
  - [ cd, gpu-burn/ ]
  - PATH=${PATH}:/usr/local/cuda/bin make
- - crontab -l | { cat; echo '*/30 * * * * /opt/gpu-burn/gpu_burn 60'; } | crontab -
+ - crontab -l | { cat; echo '*/30 * * * * cd /opt/gpu-burn/ && ./gpu_burn 60'; } | crontab -
 
