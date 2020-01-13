@@ -2,7 +2,7 @@
 
 ### see https://github.com/mindprince/nvidia_gpu_prometheus_exporter
 
-sudo apt update
+sudo apt-get update
 sudo apt-get install -y golang-go
 go get github.com/mindprince/nvidia_gpu_prometheus_exporter
 sudo cp ${HOME}/go/bin/nvidia_gpu_prometheus_exporter /usr/local/bin/
