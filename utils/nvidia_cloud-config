@@ -1,20 +1,27 @@
 #cloud-config
 
 runcmd:
- ### Install Nvidia driver
- - [ wget, -O, /opt/nvidia_driver_install.sh, 'https://bitbucket.kmiservicehub.com/users/fabrizio.catalucci/repos/monitoring-public/raw/utils/nvidia_driver_install.sh' ]
- - [ chmod, +x, '/opt/nvidia_driver_install.sh' ]
- - [ /opt/nvidia_driver_install.sh ]
- ### Install monitoring tool for Nvidia GPUs
- - [ wget, -O, /opt/nvidia_gpuexporter_install.sh, 'https://bitbucket.kmiservicehub.com/users/fabrizio.catalucci/repos/monitoring-public/raw/utils/nvidia_gpuexporter_install.sh' ]
- - [ chmod, +x, '/opt/nvidia_gpuexporter_install.sh' ]
- - [ /opt/nvidia_gpuexporter_install.sh ]
- ### FOR DEMO ONLY: remove the following lines on production servers
- ### stress test for GPU
- - [ sudo, apt-get, -y, install, cuda-10-2 ]
- - [ cd, /opt ]
- - [ git, clone, 'https://github.com/wilicc/gpu-burn.git' ]
- - [ cd, gpu-burn/ ]
- - PATH=${PATH}:/usr/local/cuda/bin make
- - crontab -l | { cat; echo '*/30 * * * * cd /opt/gpu-burn/ && ./gpu_burn 60 >/dev/null'; } | crontab -
+  ### Install Nvidia driver
+  - [ wget, -O, /opt/nvidia_driver_install.sh, 'https://bitbucket.kmiservicehub.com/users/fabrizio.catalucci/repos/monitoring-public/raw/utils/nvidia_driver_install.sh' ]
+  - [ chmod, +x, '/opt/nvidia_driver_install.sh' ]
+  - [ /opt/nvidia_driver_install.sh ]
+  ### Install monitoring tool for Nvidia GPUs
+  - [ wget, -O, /opt/nvidia_gpuexporter_install.sh, 'https://bitbucket.kmiservicehub.com/users/fabrizio.catalucci/repos/monitoring-public/raw/utils/nvidia_gpuexporter_install.sh' ]
+  - [ chmod, +x, '/opt/nvidia_gpuexporter_install.sh' ]
+  - [ /opt/nvidia_gpuexporter_install.sh ]
+  ### stress test for GPU
+  - [ sudo, apt-get, -y, install, cuda-10-2 ]
+  - [ cd, /opt ]
+  - [ git, clone, 'https://github.com/wilicc/gpu-burn.git' ]
+  - [ cd, gpu-burn/ ]
+  - PATH=${PATH}:/usr/local/cuda/bin make
+  ### FOR DEMO ONLY: do not enable the following line on production servers
+#  - crontab -l | { cat; echo '*/30 * * * * cd /opt/gpu-burn/ && ./gpu_burn 60 >/dev/null'; } | crontab -
+
+power_state:
+  delay: now
+  mode: reboot
+  message: "Nvidia drivers installed. Rebooting!"
+  timeout: 30
+  condition: True
 
