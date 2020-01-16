@@ -2,11 +2,11 @@
 
 runcmd:
   ### Install Nvidia driver
-  - [ wget, -O, /opt/nvidia_driver_install.sh, 'https://bitbucket.kmiservicehub.com/users/fabrizio.catalucci/repos/monitoring-public/raw/utils/nvidia_driver_install.sh' ]
+  - [ wget, -O, /opt/nvidia_driver_install.sh, 'https://bitbucket.kmiservicehub.com/projects/IMON/repos/public/raw/utils/nvidia_driver_install.sh' ]
   - [ chmod, +x, '/opt/nvidia_driver_install.sh' ]
   - [ /opt/nvidia_driver_install.sh ]
   ### Install monitoring tool for Nvidia GPUs
-  - [ wget, -O, /opt/nvidia_gpuexporter_install.sh, 'https://bitbucket.kmiservicehub.com/users/fabrizio.catalucci/repos/monitoring-public/raw/utils/nvidia_gpuexporter_install.sh' ]
+  - [ wget, -O, /opt/nvidia_gpuexporter_install.sh, 'https://bitbucket.kmiservicehub.com/projects/IMON/repos/public/raw/utils/nvidia_gpuexporter_install.sh' ]
   - [ chmod, +x, '/opt/nvidia_gpuexporter_install.sh' ]
   - [ /opt/nvidia_gpuexporter_install.sh ]
   ### stress test for GPU
