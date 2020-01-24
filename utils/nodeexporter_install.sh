@@ -32,5 +32,5 @@ EOT
 systemctl daemon-reload
 systemctl enable node_exporter.service
 systemctl start  node_exporter.service
-systemctl status node_exporter.service
+systemctl status node_exporter.service --no-pager
 
