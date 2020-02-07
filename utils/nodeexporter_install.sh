@@ -23,7 +23,7 @@ After=network-online.target
 User=node_exporter
 Group=node_exporter
 Type=simple
-ExecStart=/usr/local/bin/node_exporter --collector.systemd --collector.filesystem.ignored-fs-types="^(autofs|binfmt_misc|bpf|cgroup2?|configfs|debugfs|devpts|devtmpfs|fusectl|hugetlbfs|mqueue|nsfs|overlay|proc|procfs|pstore|rpc_pipefs|securityfs|selinuxfs|squashfs|sysfs|tracefs|tmpfs|fuse\\..+)$"
+ExecStart=/usr/local/bin/node_exporter --collector.systemd --collector.diskstats.ignored-devices="^(ram|loop|fd|tmpfs|lxcfs|(h|s|v|xv)d[a-z]|nvme\\d+n\\d+p)\\d+$"
 
 [Install]
 WantedBy=multi-user.target
