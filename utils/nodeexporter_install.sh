@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION="0.18.1"
+VERSION="1.0.0"
 
 if [ "$EUID" -ne 0 ]
   then echo "Please run as root"
